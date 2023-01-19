@@ -16,11 +16,11 @@ class UserManager(BaseUserManager):
         user.save(using=self.db)
         return user
 
-    def create_user(self, username, email, name,last_name, password=None, **extra_fields):
-        return self._create_user(username, email, name,last_name, password, False, False, **extra_fields)
+    def create_user(self, email, name,last_name, password=None, **extra_fields):
+        return self._create_user(email, name,last_name, password, False, False, **extra_fields)
 
-    def create_superuser(self, username, email, name,last_name, password=None, **extra_fields):
-        return self._create_user(username, email, name,last_name, password, True, True, **extra_fields)
+    def create_superuser(self, email, name,last_name, password=None, **extra_fields):
+        return self._create_user(email, name,last_name, password, True, True, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('Correo Electrónico',max_length = 255, unique = True,)
